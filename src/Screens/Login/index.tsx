@@ -1,9 +1,13 @@
-import { View, Text, Button } from 'react-native';
+import { View, Image, Text, Button } from 'react-native';
+import { styles } from './styles';
+import logo from '../../../assets/logo.png';
+import { Heading } from '../../components/Heading';
+
 function Login({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Login</Text>
-            <Button title="SignUp" onPress={() => navigation.navigate("SignUp")}></Button>
+        <View style={styles.container}>
+            <Image source={logo}  resizeMethod="scale" />
+            <Heading title="Sysmap Parrot" subtitle="Faça login e comece a usar!" />
         </View>
     );
 }
