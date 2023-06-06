@@ -1,5 +1,3 @@
-// In App.js in a new project
-
 import * as React from 'react';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,7 +7,15 @@ import SignUp from './src/Screens/SignUp';
 import Home from './src/Screens/Home';
 import Friends from './src/Screens/Friends';
 import Profile from './src/Screens/Profile';
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_900Black
+} from '@expo-google-fonts/inter';
 import { THEME } from './src/theme';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,14 +31,27 @@ const AppTheme = {
 
 function App() {
   const isLoggedIn = false;
+
+  let [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_900Black
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
+    // {fontsLoaded ? () : (<Text>testeoo</Text>)}
     <NavigationContainer theme={AppTheme}>
       {!isLoggedIn ? (
 
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            statusBarStyle: "inverted",
+            statusBarStyle: "dark",
           }}
         >
           <Stack.Screen name="Login" component={Login} />
