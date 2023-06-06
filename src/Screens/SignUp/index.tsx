@@ -1,10 +1,25 @@
-import { View, Text, Button } from 'react-native';
+import React from 'react';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
+import AuthForm from '../../components/AuthForm';
+import { styles } from './styles';
 function SignUp({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Logando</Text>
-            <Button title="Login" onPress={() => navigation.navigate("Login")}></Button>
-        </View>
+        <>
+            <AuthForm 
+                authFormSubTitle='Registre-se e comece a usar!'
+                submitFormButtonText='Registrar'
+            />
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate("Login")
+                }}
+            >
+                <Text style={styles.link}>
+                    Já possui cadastro? Acesse!
+                </Text>
+            </TouchableOpacity>
+
+        </>
     );
 }
 
